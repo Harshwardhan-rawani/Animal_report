@@ -11,7 +11,7 @@ def index(request):
       search=request.POST.get('search')
       search=search.lower()
    if len(search)==0:
-      list_of_animal=['lion','tiger','elephant','monkey','zebra','horse','cheetah']
+      list_of_animal=['tiger','lion','horse','monkey']
       name=random.choice(list_of_animal)
    if len(search)>0:
       name=search
@@ -19,25 +19,17 @@ def index(request):
    api_url = 'https://api.api-ninjas.com/v1/animals?name={}'.format(name)
    response = requests.get(api_url, headers={'X-Api-Key': '7IhSopV9PO7LxdDztrNv0A==mViAU5ZdVucYNZrR'})
    if response.status_code == requests.codes.ok:
-      print('ok')
+      print("ok printed")
    else:
       print("Error:", response.status_code, response.text)
-   report_list=response.json()
-   report=report_list[0]
-   report_char=report['characteristics']
    pic=photo.objects.filter(Name=name).values()
-   return render(request,'index.html',{'report_name':report['name'],
-                                       'report_location':report['locations'],
-                                          'report_diet':report_char['diet'] ,
-                                      
-                                       'report_weight':report_char['weight'],
-                                       'report_lifespan':report_char['lifespan'],
-                                       'report_skin_type':report_char['skin_type'],
-                                       'report_color':report_char['color'],
-                                      
-                                       'pic':pic}
-   
-                                          )
+   report_list=response.json()
+   pic=photo.objects.filter(Name=name).values()
+   new_dict={}
+   for i in report_list:
+      if (i.get('name').lower()== name):
+         new_dict=i
+   return render(request,'index.html',{'pic':pic,'report':new_dict} )
 
 def feed(request):
    text=""

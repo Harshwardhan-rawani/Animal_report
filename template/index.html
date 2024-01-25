@@ -17,14 +17,14 @@
             <div class="col-md-8" style="background-color: #FDF7E4; padding: 40px; color: black;">
                    <div>
                     <h2>Introduction :-</h2>
-                    <h4>{{report_name}}</h4>
+                    <h4>{{report.name}}</h4>
                     </div>
                     <br>
                    <div>
                         <h2>Location :-</h2>
                     <ul>
 
-                        {% for i in report_location %}
+                        {% for i in report.locations %}
                         <li><h4><i>{{i}}</i></h4></li>
                         {% endfor %}
                     </ul>
@@ -39,29 +39,31 @@
                             <th scope="col">Value</th>
                           </tr>
                         </thead>
+      
                         <tbody>
                           <tr>  
-                            <td>Diet </td>
-                            <td>{{report_diet}}</td>
+                            <td>Diet</td>
+                            <td>{{report.characteristics.diet}} </td>
                           </tr>
                           <tr>  
                             <td>Color</td>
-                            <td>{{report_color}}</td>
+                            <td>{{report.characteristics.color}}</td>
                           </tr>
                           <tr>  
                             <td>Skin Type </td>
-                            <td>{{report_skin_type}}</td>
+                            <td>{{report.characteristics.skin_type}}</td>
                           </tr>
                           <tr>  
                             <td>Life Span</td>
-                            <td>{{report_lifespan}}</td>
+                            <td>{{report.characteristics.lifespan}}</td>
                           </tr>
                           <tr>  
                             <td>Weight</td>
-                            <td>{{report_weight}}</td>
+                            <td>{{report.characteristics.diet}}</td>
                           </tr>
                         
                         </tbody>
+                      
                       </table>
                     </div>
                    
