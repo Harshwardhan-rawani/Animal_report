@@ -1,0 +1,72 @@
+{% include "header.html" %}
+    <br>
+    <br>
+    <br><br><br><br>
+    <!-- body -->
+    <div class="container-md" style="padding: 20px; background-color: teal;">
+        <form  method="POST" style="display: flex; justify-content: end;">
+            {% csrf_token %}
+            <input type="text" name="search" placeholder="search animal" style="border-top-left-radius: 10px; width: 200px; border: 0px;">
+            <button type="submit" class="index_btn" style="border-bottom-right-radius: 10px; background-color: teal; padding: 15px; width: 150px; border: 1px solid white;">Search</button>
+        </form>
+        <br>
+        <div class="row">
+            <div class="col-md-4" style="background-color: teal; height: 400px;">
+                <img src="{% for i in pic %}/media/{{i.Photo}} {% endfor %}" alt="no image in database" style="height: 100%; width: 100%;">
+            </div>
+            <div class="col-md-8" style="background-color: #FDF7E4; padding: 40px; color: black;">
+                   <div>
+                    <h2>Introduction :-</h2>
+                    <h4>{{report_name}}</h4>
+                    </div>
+                    <br>
+                   <div>
+                        <h2>Location :-</h2>
+                    <ul>
+
+                        {% for i in report_location %}
+                        <li><h4><i>{{i}}</i></h4></li>
+                        {% endfor %}
+                    </ul>
+                    </div>
+                    <br>
+                   <div>
+                    <h2>Characteristic :-</h2>
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">Characteristic</th>
+                            <th scope="col">Value</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>  
+                            <td>Diet </td>
+                            <td>{{report_diet}}</td>
+                          </tr>
+                          <tr>  
+                            <td>Color</td>
+                            <td>{{report_color}}</td>
+                          </tr>
+                          <tr>  
+                            <td>Skin Type </td>
+                            <td>{{report_skin_type}}</td>
+                          </tr>
+                          <tr>  
+                            <td>Life Span</td>
+                            <td>{{report_lifespan}}</td>
+                          </tr>
+                          <tr>  
+                            <td>Weight</td>
+                            <td>{{report_weight}}</td>
+                          </tr>
+                        
+                        </tbody>
+                      </table>
+                    </div>
+                   
+            </div>
+        </div>
+    </div>
+</body>
+</html>

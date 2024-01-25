@@ -1,0 +1,26 @@
+
+/* body */
+.container{
+    background-color: #248987cf;
+    width: 80%;
+    padding: 30px;
+}
+.form-control{
+    border-radius: 80px;
+   
+}
+.feed{
+    border-radius: 30px;
+}
+.btn_feed{
+    background-color: teal;
+    color: white;
+    font-weight: bolder;
+    font-family: Georgia, serif;
+    width: 100%;
+    border-radius: 80px;
+    padding: 10px;
+}
+label{
+    font-family: Georgia, serif;
+}
